@@ -1,3 +1,7 @@
+/*
+- info를 만들어 시간을 줄이고자 했는데 info 없이 그냥 다 순회해도 결국 시간복잡도는 같아질듯? 
+- 재귀함수에서 return을 사용해서 찾았는지 못찾았는지를 반환하면 찾으면 더 안찾고 끝낼 수 있다!
+*/
 function solution(tickets) {
     const visited = [];
     let answer = [];

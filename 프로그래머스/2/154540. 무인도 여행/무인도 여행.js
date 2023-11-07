@@ -4,25 +4,25 @@ function solution(maps) {
     const isVisited = Array.from({length:maps.length},()=>new Array(maps[0].length).fill(false));
     
 
-    let max = 0;
     const dfs = (i,j)=>{
-        if(isVisited[i][j] || mapArr[i][j] =='X') return;
+        if(isVisited[i][j] || mapArr[i][j] =='X') return 0;
         isVisited[i][j] = true;
-        max += Number(mapArr[i][j]);
         
-        if(i+1<maps.length) dfs(i+1,j);
-        if(i-1>=0)dfs(i-1,j)
-        if(j+1<maps[0].length) dfs(i,j+1);
-        if(j-1>=0)dfs(i,j-1)
+        let sum = 0;
+        
+        if(i+1<maps.length) sum+=dfs(i+1,j);
+        if(i-1>=0) sum+= dfs(i-1,j)
+        if(j+1<maps[0].length) sum+=dfs(i,j+1);
+        if(j-1>=0)sum+=dfs(i,j-1)
+        
+        return sum + Number(mapArr[i][j]);
     }
     
 
     for(let i = 0;i<maps.length;i+=1){
         for(let j = 0;j<maps[0].length;j+=1){
             if(!isVisited[i][j]&&mapArr[i][j]!=='X') {
-                dfs(i,j);
-                answer.push(max);
-                max = 0 ;
+                answer.push(dfs(i,j,0));
             }
         }
     }

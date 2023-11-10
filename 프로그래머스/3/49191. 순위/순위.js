@@ -18,8 +18,13 @@ function solution(n, results) {
                         map[k][j] = 1;
                         map[j][k] = 0;
                     }
+                    if(map[j][k]===1){
+                        map[k][i] = 0;
+                        map[i][k] = 1;
+                    }
                 }
             }
+        
         }
     }
     

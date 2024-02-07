@@ -5,7 +5,6 @@ const [[N, M], ...cmap] = fs
   .trim()
   .split("\n")
   .map((line) => line.split(" ").map(Number));
-const isVisited = Array.from({ length: N }, () => new Array(M).fill(false));
 
 function isReadyToMelt(i, j) {
   let exposure = 0;
